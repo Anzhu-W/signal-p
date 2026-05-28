@@ -37,6 +37,15 @@ class BenadjilaCNNBest(SCAModel):
             nn.Linear(4096, 4096),     nn.ReLU(),
             nn.Linear(4096, 256),
         )
+        # Match Keras default (glorot_uniform = Xavier uniform).
+        # The published Benadjila paper relies on this init; PyTorch's Kaiming default
+        # plus the all-ReLU + no-BN + 67M-param + lr=1e-5 combination causes the model
+        # to memorise the training set (train_loss -> 0, val_loss explodes).
+        for m in self.modules():
+            if isinstance(m, (nn.Conv1d, nn.Linear)):
+                nn.init.xavier_uniform_(m.weight)
+                if m.bias is not None:
+                    nn.init.zeros_(m.bias)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         if x.ndim == 2:
