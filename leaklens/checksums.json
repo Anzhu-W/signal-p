@@ -1,0 +1,10 @@
+{
+  "ASCAD_data.zip": {
+    "url": "https://www.data.gouv.fr/api/1/datasets/r/e7ab6f9e-79bf-431f-a5ed-faf0ebe9b08e",
+    "sha256": "PLACEHOLDER_VERIFY_ON_FIRST_DOWNLOAD",
+    "approx_size_gb_compressed": 4.2,
+    "approx_size_gb_extracted": 7.3,
+    "extracted_target": "ASCAD_data/ASCAD_databases/ASCAD.h5",
+    "notes": "ZIP from data.gouv.fr; canonical ASCAD v1 (fixed-key, desync=0). Bundle also includes ASCAD_desync50/100.h5, raw traces, and ANSSI's pre-trained Keras CNN_best/MLP_best checkpoints."
+  }
+}
